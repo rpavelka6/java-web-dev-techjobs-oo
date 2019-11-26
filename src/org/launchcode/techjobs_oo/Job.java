@@ -46,6 +46,27 @@ public class Job {
         return Objects.hash(getId());
     }
 
+    // toString()
+
+    @Override
+    public String toString() {
+        if ( name == "" ) { name = "Data not available"; }
+        if ( employer.getValue() == "" ) { employer.setValue("Data not available"); }
+        if ( location.getValue() == "" ) { location.setValue("Data not available"); }
+        if ( positionType.getValue() == "" ) { positionType.setValue("Data not available"); }
+        if ( coreCompetency.getValue() == "" ) { coreCompetency.setValue("Data not available"); }
+
+        return "\n" +
+                      "ID: " + id + "\n" +
+                      "Name: " + name + "\n" +
+                      "Employer: " + employer + "\n" +
+                      "Location: " + location + "\n" +
+                      "Position Type: " + positionType.getValue() + "\n" +
+                      "Core Competency: " + coreCompetency +
+                      "\n";
+//        return "\n";
+    }
+
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
@@ -61,35 +82,19 @@ public class Job {
         return employer;
     }
 
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
-    }
+    public void setEmployer(Employer employer) { this.employer = employer; }
 
-    public Location getLocation() {
-        return location;
-    }
+    public Location getLocation() { return location; }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
+    public void setLocation(Location location) { this.location = location; }
 
-    public PositionType getPositionType() {
-        return positionType;
-    }
+    public PositionType getPositionType() { return positionType; }
 
-    public void setPositionType(PositionType positionType) {
-        this.positionType = positionType;
-    }
+    public void setPositionType(PositionType positionType) { this.positionType = positionType; }
 
-    public CoreCompetency getCoreCompetency() {
-        return coreCompetency;
-    }
+    public CoreCompetency getCoreCompetency() { return coreCompetency; }
 
-    public void setCoreCompetency(CoreCompetency coreCompetency) {
-        this.coreCompetency = coreCompetency;
-    }
+    public void setCoreCompetency(CoreCompetency coreCompetency) { this.coreCompetency = coreCompetency; }
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 }

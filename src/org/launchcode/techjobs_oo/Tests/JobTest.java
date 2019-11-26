@@ -6,18 +6,25 @@ import org.launchcode.techjobs_oo.*;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class JobTest {
 
     Job test_job1;
     Job test_job2;
     Job test_job3;
+    Job test_job4;
+    Job test_job5;
+    Job test_job6;
 
     @Before
     public void createJobObject() {
         test_job1 = new Job();
         test_job2 = new Job();
         test_job3 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job4 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        test_job5 = new Job("", new Employer("ACME"), new Location("City"), new PositionType("Developer"), new CoreCompetency("Persistence"));
+        test_job6 = new Job("", new Employer("ACME"), new Location("City"), new PositionType("Developer"), new CoreCompetency("Persistence"));
     }
 
     @Test
@@ -27,7 +34,6 @@ public class JobTest {
 
     @Test
     public void testJobConstructorSetsAllFields() {
-
         assertTrue( test_job3 instanceof Job );
 //        assertTrue( "Product Tester", test_job3.getName());
         assertTrue( test_job3.getEmployer() instanceof Employer );
@@ -44,12 +50,32 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        Job test_job4 = new Job("Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job test_job5 = new Job( "Product Tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        assertFalse(test_job4.getId(), test_job5.getId());
+        int firstId = test_job3.getId();
+        int secondId = test_job4.getId();
+        assertFalse( firstId == secondId );
     }
 
-    private void assertFalse(int id, int id1) {
-    }
+    @Test
+    public void testToString() {
 
+        // Check for String accuracy - both labels and field values
+        assertEquals( "\n" +
+                "ID: " + test_job3.getId() + "\n" +
+                "Name: " + "Product Tester" + "\n" +
+                "Employer: " + "ACME" + "\n" +
+                "Location: " + "Desert" + "\n" +
+                "Position Type: " + "Quality control" + "\n" +
+                "Core Competency: " + "Persistence" +
+                "\n", test_job3.toString() );
+
+        assertEquals( "\n" +
+                "ID: " + test_job6.getId() + "\n" +
+                "Name: " + "Data not available" + "\n" +
+                "Employer: " + "ACME" + "\n" +
+                "Location: " + "City" + "\n" +
+                "Position Type: " + "Developer" + "\n" +
+                "Core Competency: " + "Persistence" +
+                "\n", test_job6.toString() );
+    }
 }
+
