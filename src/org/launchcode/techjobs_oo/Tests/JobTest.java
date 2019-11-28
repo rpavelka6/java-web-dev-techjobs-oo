@@ -50,6 +50,7 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
+        System.out.println("test_job3a: " + test_job3);
         int firstId = test_job3.getId();
         int secondId = test_job4.getId();
         assertFalse( firstId == secondId );
@@ -59,6 +60,7 @@ public class JobTest {
     public void testToString() {
 
         // Check for String accuracy - both labels and field values
+        System.out.println("test_job3: " + test_job3);
         assertEquals( "\n" +
                 "ID: " + test_job3.getId() + "\n" +
                 "Name: " + "Product Tester" + "\n" +
@@ -67,6 +69,8 @@ public class JobTest {
                 "Position Type: " + "Quality control" + "\n" +
                 "Core Competency: " + "Persistence" +
                 "\n", test_job3.toString() );
+
+        System.out.println("test_job6: " + test_job6);
 
         assertEquals( "\n" +
                 "ID: " + test_job6.getId() + "\n" +
